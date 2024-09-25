@@ -1,72 +1,119 @@
-/* Estilos generales */
-* {
+/* Estilo global */
+body {
+    font-family: 'Poppins', sans-serif;  /* Cambiamos la fuente a algo más moderno */
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);  /* Fondo degradado suave */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-x: hidden;  /* Para evitar el scroll horizontal */
+    animation: gradientBackground 10s ease infinite; /* Animación de fondo */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: url('f97a0d_cceca1dfe39940d49c9eac358da59ff7~mv2.jpeg') no-repeat center center fixed;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(255, 0, 0);
-}
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #007BFF /* Oscurece un poco el fondo */
+/* Animación del fondo */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
-    position: relative;
-    z-index: 1;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
-}
-
-h1 {
-    margin-bottom: 30px;
-    font-size: 2rem;
-    color: white;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    padding: 20px;
+    gap: 20px;
 }
 
 .box {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8); /* Caja semitransparente */
+    backdrop-filter: blur(10px); /* Efecto de fondo borroso */
+    padding: 30px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación al pasar el mouse */
+    cursor: pointer;
 }
 
-.box p {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: black;
+/* Efecto hover de las cajas */
+.box:hover {
+    transform: translateY(-10px);  /* Elevación al pasar el mouse */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    animation: fadeIn 2s ease; /* Animación de entrada */
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Efecto hover */
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4); /* Sombra suave */
+}
+
+/* Efecto hover del botón */
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6); /* Aumenta la sombra */
+}
+
+/* Animación para que los elementos aparezcan suavemente */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación para que los botones tengan movimiento sutil */
+@keyframes btnMove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
 }
 
 .btn {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
+    animation: btnMove 3s infinite ease-in-out; /* Añadimos animación sutil */
 }
 
-.btn:hover {
-    background-color: #0056b3;
+/* Responsividad */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
 }
